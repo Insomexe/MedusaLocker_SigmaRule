@@ -1,0 +1,30 @@
+title: Detects win.medusalocker
+id: rule_win_medusalocker_auto
+description: Detects win.medusalocker.
+status: experimental
+author: Samet Yusuf İÇGEN 
+date: 26.05.2024
+references:
+  - https://malpedia.caad.fkie.fraunhofer.de/details/win.medusalocker
+tags:
+  - ransomware
+  - malware
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    CommandLine:
+      - 'regexp': ['(?i).*\\MedusaLockerInfo\\MedusaLockerProject\\MedusaLocker\\Release\\MedusaLocker\.pdb.*']
+      - 'regexp': ['(?i).*SOFTWARE\\Medusa.*']
+      - 'regexp': ['(?i).*{8761ABBD-7F85-42EE-B272-A76179687C63}.*']
+      - 'regexp': ['(?i).*{3E5FC7F9-9A51-4367-9063-A120244FBEC7}.*']
+      - 'regexp': ['(?i).*{6EDD6D74-C007-4E75-B76A-E5740995E24C}.*']
+      - 'regexp': ['(?i).*vssadmin\.exe delete.*']
+      - 'regexp': ['(?i).*bcdedit\.exe /set \{default\}.*']
+      - 'regexp': ['(?i).*wbadmin delete systemstatebackup.*']
+      - 'regexp': ['(?i).*\.exe,\.dll,\.sys,\.ini,\.lnk,\.rdp,\.encrypted.*']
+      - 'regexp': ['(?i).*\[LOCKER\].*']
+falsepositives:
+  - 'Administrators or tools performing legitimate actions.'
+level: high
