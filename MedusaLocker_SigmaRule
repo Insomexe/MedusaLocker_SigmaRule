@@ -2,7 +2,7 @@ title: Detects win.medusalocker
 id: rule_win_medusalocker_auto
 description: Detects win.medusalocker.
 status: experimental
-author: Samet Yusuf İÇGEN 
+author: Insomnia 
 date: 26.05.2024
 references:
   - https://malpedia.caad.fkie.fraunhofer.de/details/win.medusalocker
